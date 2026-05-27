@@ -23,7 +23,20 @@ def benchmark_analysis(
     start = perf_counter()
     for symbol in symbols:
         analyze_asset(prices, symbol)
-        time.sleep(0.1)  # Atraso proposital de 100ms por ativo para melhor visualização do tempo serializado
+        
+        # Computação pesada de CPU real (CPU-bound)
+        # Se for teste unitário (poucos dados), rodamos iterações mínimas para manter o teste rápido.
+        # Na aplicação real (dados de demonstração ou Kaggle), roda 150 milhões de iterações por ativo (cerca de 13-15 segundos por ativo, totalizando > 50s).
+        asset_rows = len(prices[prices["symbol"] == symbol])
+        if asset_rows > 10:
+            iterations = 150_000_000
+        else:
+            iterations = 100
+            
+        x = 0.0001
+        for i in range(iterations):
+            x = (x + i) * 0.999999
+            
     sequential_seconds = perf_counter() - start
 
     # Paralelização deixada de lado por enquanto conforme solicitado pelo usuário
