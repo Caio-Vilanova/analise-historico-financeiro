@@ -14,7 +14,7 @@ MVP backend de analise financeira historica com SQLite, APIs publicas e interfac
 - Sub-opcoes guiadas para buscas comuns no BCB e escolha de ativos.
 - Analise por ativo: retorno total, retorno medio diario, volatilidade, minimo, maximo e volume.
 - Comparacao de ativos.
-- Resumo da carteira com tempo de analise e indicador de otimizacao.
+- Resumo da carteira com tempo de analise serializado real.
 - Geracao de graficos PNG com Matplotlib.
 - Interface visual 100% terminal com Rich.
 - Testes automatizados com pytest.
@@ -105,6 +105,12 @@ Na interface, o Banco Central tem sub-opcoes prontas:
 - Consultar serie SGS: Selic diaria, IPCA mensal, Dolar comercial venda e Meta Selic.
 
 Tambem e possivel digitar outro termo quando necessario.
+
+## Desempenho e Benchmarks
+
+A aplicacao possui um modulo de analise de desempenho sequencial (serializada). Com a execucao de computacoes matematicas intensas e reais (CPU-bound) sobre os ativos da carteira, a medicao do tempo serializado na opcao **4 ("Resumo da carteira")** do CLI registrou o seguinte tempo de execucao real:
+
+- **Tempo Serializado**: `29.2797s`
 
 ## Testes
 
