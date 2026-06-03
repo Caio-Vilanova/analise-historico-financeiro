@@ -1,4 +1,4 @@
-# Análise Financeira Paralela com Multiprocessing em Python
+# Análise Financeira Paralela 
 
 **Disciplina:** Programação Concorrente e Distribuída  
 **Turma:** ADSN04  
