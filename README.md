@@ -105,7 +105,7 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 
 ---
 
-### Teste com 16 Processos
+### Teste com 12 Processos
 
 | Métrica | Resultado |
 |----------|----------:|
