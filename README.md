@@ -3,7 +3,7 @@
 **Disciplina:** Programação Concorrente e Distribuída  
 **Turma:** ADSN04  
 **Professor:** Rafael  
-**Aluno:** Caio Vinicius da Silva Vilanova 83420
+**Alunos:** Caio Vinicius da Silva Vilanova 83420 e Matheus Nery Walkowicz 077651
 
 
 **Data:** 01/06/2026  
