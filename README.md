@@ -63,59 +63,14 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 
 ## 4. Resultados Experimentais
 
-### Teste com 2 Processos
+## 4. Resultados Experimentais
 
-| Métrica | Resultado |
-|----------|----------:|
-| Registros Processados | 34.906.486 |
-| Tempo Serial | 75,96 s |
-| Tempo Paralelo | 39,71 s |
-| Speedup | 1,91x |
-| CPU Média | 10,91% |
-| CPU Máxima | 18,9% |
-| RAM Utilizada | 11,46 GB |
-
----
-
-### Teste com 4 Processos
-
-| Métrica | Resultado |
-|----------|----------:|
-| Registros Processados | 34.906.486 |
-| Tempo Serial | 75,24 s |
-| Tempo Paralelo | 21,78 s |
-| Speedup | 3,46x |
-| CPU Média | 13,01% |
-| CPU Máxima | 30,7% |
-| RAM Utilizada | 11,50 GB |
-
----
-
-### Teste com 8 Processos
-
-| Métrica | Resultado |
-|----------|----------:|
-| Registros Processados | 34.906.486 |
-| Tempo Serial | 74,79 s |
-| Tempo Paralelo | 13,72 s |
-| Speedup | 5,45x |
-| CPU Média | 16,89% |
-| CPU Máxima | 66,5% |
-| RAM Utilizada | 11,27 GB |
-
----
-
-### Teste com 12 Processos
-
-| Métrica | Resultado |
-|----------|----------:|
-| Registros Processados | 34.906.486 |
-| Tempo Serial | 93,45 s |
-| Tempo Paralelo | 12,46 s |
-| Speedup | 7,50x |
-| CPU Média | 15,40% |
-| CPU Máxima | 100,0% |
-| RAM Utilizada | 11,55 GB |
+| Processos | Registros Processados | Tempo Serial (s) | Tempo Paralelo (s) | Speedup | CPU Média | CPU Máxima | RAM Utilizada |
+|:---------:|---------------------:|-----------------:|-------------------:|:-------:|----------:|-----------:|--------------:|
+| 2 | 34.906.486 | 75,96 | 39,71 | 1,91x | 10,91% | 18,9% | 11,46 GB |
+| 4 | 34.906.486 | 75,24 | 21,78 | 3,46x | 13,01% | 30,7% | 11,50 GB |
+| 8 | 34.906.486 | 74,79 | 13,72 | 5,45x | 16,89% | 66,5% | 11,27 GB |
+| 12 | 34.906.486 | 93,45 | 12,46 | 7,50x | 15,40% | 100,0% | 11,55 GB |
 
 ---
 
