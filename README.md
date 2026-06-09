@@ -63,8 +63,6 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 
 ## 4. Resultados Experimentais
 
-## 4. Resultados Experimentais
-
 | Processos | Registros Processados | Tempo Serial (s) | Tempo Paralelo (s) | Speedup | CPU Média | CPU Máxima | RAM Utilizada |
 |:---------:|---------------------:|-----------------:|-------------------:|:-------:|----------:|-----------:|--------------:|
 | 2 | 34.906.486 | 75,96 | 39,71 | 1,91x | 10,91% | 18,9% | 11,46 GB |
@@ -72,6 +70,11 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 | 8 | 34.906.486 | 74,79 | 13,72 | 5,45x | 16,89% | 66,5% | 11,27 GB |
 | 12 | 34.906.486 | 93,45 | 12,46 | 7,50x | 15,40% | 100,0% | 11,55 GB |
 
+### Interpretação dos Resultados
+
+Observa-se uma redução significativa do tempo de execução a partir de 8 processos. Isso ocorre porque a carga de trabalho passa a ser distribuída de forma mais eficiente entre os núcleos do processador. Como os arquivos CSV podem ser processados independentemente, múltiplos processos conseguem trabalhar simultaneamente sobre diferentes partes dos dados, reduzindo o tempo total necessário para concluir a tarefa.
+
+Apesar do ganho de desempenho, o aumento do número de processos não gera uma redução proporcional do tempo, pois fatores como leitura de disco (I/O), gerenciamento dos processos e limitações de hardware passam a influenciar os resultados.
 ---
 
 ## 5. Cálculo de Speedup e Eficiência
