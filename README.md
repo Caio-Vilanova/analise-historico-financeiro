@@ -73,7 +73,6 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 ### Interpretação dos Resultados
 
 Observa-se uma redução significativa do tempo de execução a partir de 8 processos. Isso ocorre porque a carga de trabalho passa a ser distribuída de forma mais eficiente entre os núcleos do processador. Como os arquivos CSV podem ser processados independentemente, múltiplos processos conseguem trabalhar simultaneamente sobre diferentes partes dos dados, reduzindo o tempo total necessário para concluir a tarefa.
-
 Apesar do ganho de desempenho, o aumento do número de processos não gera uma redução proporcional do tempo, pois fatores como leitura de disco (I/O), gerenciamento dos processos e limitações de hardware passam a influenciar os resultados.
 ---
 
