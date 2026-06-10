@@ -94,20 +94,7 @@ Eficiência(p) = Speedup(p) / p × 100%
 
 ---
 
-## 6. Tabela de Resultados
-
-| Processos | Tempo Paralelo (s) | Speedup | Eficiência |
-|:---------:|:------------------:|:-------:|:----------:|
-| 2 | 39,71 | 1,91x | 95,5% |
-| 4 | 21,78 | 3,46x | 86,5% |
-| 8 | 13,72 | 5,45x | 68,1% |
-| 16 | 12,46 | 7,50x | 46,9% |
-
-> **Melhor resultado: 12 processos — 12,46 segundos — speedup de 7,50x**
-
----
-
-## 7. Análise dos Resultados
+## 6. Análise dos Resultados
 
 Os resultados demonstram ganhos significativos de desempenho conforme o número de processos aumenta.
 
@@ -131,7 +118,7 @@ O consumo de memória permaneceu estável em aproximadamente 11,5 GB durante tod
 
 ---
 
-## 8. Conclusão
+## 7. Conclusão
 
 O uso de paralelismo com a biblioteca `multiprocessing` apresentou ganhos expressivos no processamento da base financeira analisada.
 
