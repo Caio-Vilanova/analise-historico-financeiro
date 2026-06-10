@@ -57,7 +57,7 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 - 2 processos
 - 4 processos
 - 8 processos
-- 16 processos
+- 12 processos
 
 ---
 
