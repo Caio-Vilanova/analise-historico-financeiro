@@ -103,7 +103,7 @@ Eficiência(p) = Speedup(p) / p × 100%
 | 8 | 13,72 | 5,45x | 68,1% |
 | 16 | 12,46 | 7,50x | 46,9% |
 
-> **Melhor resultado: 16 processos — 12,46 segundos — speedup de 7,50x**
+> **Melhor resultado: 12 processos — 12,46 segundos — speedup de 7,50x**
 
 ---
 
