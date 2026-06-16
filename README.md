@@ -1,12 +1,11 @@
-# Análise Financeira Paralela 
+# Análise Financeira Paralela
 
-**Disciplina:** Programação Concorrente e Distribuída  
-**Turma:** ADSN04  
-**Professor:** Rafael  
+**Disciplina:** Programação Concorrente e Distribuída
+**Turma:** ADSN04
+**Professor:** Rafael
 **Alunos:** Caio Vinicius da Silva Vilanova 83420 e Matheus Nery Walkowicz 077651
 
-
-**Data:** 01/06/2026  
+**Data:** 01/06/2026
 
 ---
 
@@ -16,28 +15,28 @@ O projeto foi desenvolvido para processar uma grande base de dados financeiros h
 
 Os dados utilizados foram obtidos através do Kaggle e contêm informações históricas do mercado financeiro. O objetivo é demonstrar os ganhos de desempenho proporcionados pelo paralelismo durante o processamento de grandes volumes de dados.
 
-| Pergunta | Resposta |
-|----------|----------|
-| Objetivo | Comparar processamento sequencial e paralelo em uma base financeira de grande volume |
-| Volume de dados | **34.906.486 registros processados** |
-| Fonte dos dados | Dataset financeiro do Kaggle |
-| Algoritmo | Leitura e processamento de arquivos CSV utilizando Multiprocessing |
-| Complexidade | O(N/p), onde N representa o número de registros e p o número de processos |
+| Pergunta        | Resposta                                                                             |
+| --------------- | ------------------------------------------------------------------------------------ |
+| Objetivo        | Comparar processamento sequencial e paralelo em uma base financeira de grande volume |
+| Volume de dados | **34.906.486 registros processados**                                                 |
+| Fonte dos dados | Dataset financeiro do Kaggle                                                          |
+| Algoritmo       | Leitura e processamento de arquivos CSV utilizando Multiprocessing                   |
+| Complexidade    | O(N/p), onde N representa o número de registros e p o número de processos             |
 
 ---
 
 ## 2. Ambiente Experimental
 
-| Item | Descrição |
-|------|-----------|
-| Processador | Intel Xeon E5-2640 v3 |
-| Número de núcleos | 8 núcleos físicos / 16 threads lógicas |
-| Memória RAM | 16 GB |
-| Sistema Operacional | Windows 11 64 bits |
-| Linguagem utilizada | Python 3.14 |
-| Biblioteca de paralelização | multiprocessing |
-| Monitoramento | psutil |
-| Ambiente de desenvolvimento | Visual Studio Code |
+| Item                        | Descrição                              |
+| --------------------------- | -------------------------------------- |
+| Processador                 | Intel Xeon E5-2640 v3                  |
+| Número de núcleos           | 8 núcleos físicos / 16 threads lógicas |
+| Memória RAM                 | 16 GB                                  |
+| Sistema Operacional         | Windows 11 64 bits                     |
+| Linguagem utilizada         | Python 3.14                            |
+| Biblioteca de paralelização | multiprocessing                        |
+| Monitoramento               | psutil                                 |
+| Ambiente de desenvolvimento | Visual Studio Code                     |
 
 ---
 
@@ -64,11 +63,15 @@ Durante os testes também foram coletadas métricas de utilização de CPU e mem
 ## 4. Resultados Experimentais
 
 | Processos | Registros Processados | Tempo Serial (s) | Tempo Paralelo (s) | Speedup | CPU Média | CPU Máxima | RAM Utilizada |
-|:---------:|---------------------:|-----------------:|-------------------:|:-------:|----------:|-----------:|--------------:|
-| 2 | 34.906.486 | 75,96 | 39,71 | 1,91x | 10,91% | 18,9% | 11,46 GB |
-| 4 | 34.906.486 | 75,24 | 21,78 | 3,46x | 13,01% | 30,7% | 11,50 GB |
-| 8 | 34.906.486 | 74,79 | 13,72 | 5,45x | 16,89% | 66,5% | 11,27 GB |
-| 12 | 34.906.486 | 93,45 | 12,46 | 7,50x | 15,40% | 100,0% | 11,55 GB |
+| --------- | --------------------- | ---------------- | ------------------ | ------- | --------- | ---------- | ------------- |
+| 2         | 34.906.486            | 75,96            | 39,71              | 1,91x   | 10,91%    | 18,9%      | 11,46 GB      |
+| 4         | 34.906.486            | 75,24            | 21,78              | 3,46x   | 13,01%    | 30,7%      | 11,50 GB      |
+| 8         | 34.906.486            | 74,79            | 13,72              | 5,45x   | 16,89%    | 66,5%      | 11,27 GB      |
+| 12        | 34.906.486            | 93,45            | 12,46              | 7,50x   | 15,40%    | 100,0%     | 11,55 GB      |
+
+### Tempo de Execução: Serial x Paralelo
+
+![Tempo de Execução: Serial x Paralelo](imagens/grafico3.png)
 
 ### Interpretação dos Resultados
 
@@ -82,15 +85,23 @@ Apesar do ganho de desempenho, o aumento do número de processos não gera uma r
 
 O speedup mede quantas vezes a execução paralela foi mais rápida em relação à execução sequencial.
 
-```text
+```
 Speedup(p) = T_sequencial / T_paralelo
 ```
 
 A eficiência mede o aproveitamento médio dos processos utilizados.
 
-```text
+```
 Eficiência(p) = Speedup(p) / p × 100%
 ```
+
+### Speedup x Nº de Processos
+
+![Speedup x Nº de Processos](imagens/grafico1.png)
+
+### Eficiência x Nº de Processos
+
+![Eficiência x Nº de Processos](imagens/grafico2.png)
 
 ---
 
@@ -102,7 +113,7 @@ Utilizando apenas 2 processos, o tempo de execução caiu de aproximadamente 76 
 
 Com 4 processos, o tempo foi reduzido para cerca de 22 segundos, mantendo alta eficiência.
 
-O melhor resultado foi obtido utilizando 16 processos, alcançando um tempo de apenas 12,46 segundos e speedup de 7,50 vezes em relação à execução sequencial.
+O melhor resultado foi obtido utilizando 12 processos, alcançando um tempo de apenas 12,46 segundos e speedup de 7,50 vezes em relação à execução sequencial.
 
 Durante os testes foi possível observar que a utilização máxima da CPU atingiu 100%, demonstrando que o sistema conseguiu explorar totalmente os recursos disponíveis do processador.
 
@@ -122,7 +133,7 @@ O consumo de memória permaneceu estável em aproximadamente 11,5 GB durante tod
 
 O uso de paralelismo com a biblioteca `multiprocessing` apresentou ganhos expressivos no processamento da base financeira analisada.
 
-O tempo de execução foi reduzido de aproximadamente 76 segundos para apenas 12,46 segundos utilizando 16 processos, representando um speedup de 7,50 vezes.
+O tempo de execução foi reduzido de aproximadamente 76 segundos para apenas 12,46 segundos utilizando 12 processos, representando um speedup de 7,50 vezes.
 
 Os experimentos demonstram que aplicações voltadas para processamento de grandes volumes de dados em formato CSV podem se beneficiar significativamente do processamento paralelo.
 
@@ -142,7 +153,7 @@ Dataset financeiro obtido através do Kaggle:
 
 ## Bibliotecas Utilizadas
 
-```bash
+```
 multiprocessing
 psutil
 time
@@ -153,8 +164,6 @@ os
 
 ## Como Executar
 
-```bash
+```
 python main.py
 ```
-
----
