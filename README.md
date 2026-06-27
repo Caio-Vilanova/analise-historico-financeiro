@@ -334,19 +334,19 @@ Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Window
 
 ### Speedup
 
-![Speedup × Nº de Processos](imagens/grafico1.png)
+![Speedup × Nº de Processos](imagens/grafico.png)
 
 A linha pontilhada é o **speedup ideal** (linear, `speedup = nº de processos`); a linha cheia é o speedup **real** obtido.
 
 ### Eficiência
 
-![Eficiência × Nº de Processos](imagens/grafico2.png)
+![Eficiência × Nº de Processos](imagens/grafico.png)
 
 Eficiência = `speedup / nº de processos × 100%`. Mede o quanto cada processo é aproveitado.
 
 ### Tempo de execução
 
-![Tempo de Execução: Serial × Paralelo](imagens/grafico3.png)
+![Tempo de Execução: Serial × Paralelo](imagens/grafico.png)
 
 ---
 
