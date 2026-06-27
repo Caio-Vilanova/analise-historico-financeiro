@@ -330,7 +330,7 @@ Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Window
 | 8 | 34.906.486 | 74,79 | 13,72 | **5,45x** | 16,89% | 66,5% | 11,27 GB |
 | 12 | 34.906.486 | 93,45 | 12,46 | **7,50x** | 15,40% | 100,0% | 11,55 GB |
 
-> A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**, o ideal é utilizar 8 threads para melhor eficiência e agilidade.
+> A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**.
 
 ### Speedup
 
@@ -358,6 +358,16 @@ Eficiência = `speedup / nº de processos × 100%`. Mede o quanto cada processo 
 - O **consumo de memória se mantém estável** (~11,5 GB) em todas as configurações.
 
 Em resumo, o paralelismo entrega ganhos reais e significativos, mas com **retornos decrescentes** — a distância entre o speedup real e o ideal aumenta com o número de processos, exatamente como prevê a Lei de Amdahl.
+
+### 🎯 Número ideal de processos
+
+Para esta carga e este hardware (**8 núcleos físicos** / 16 threads), o ponto ideal fica em **até 8 processos**:
+
+- **8 processos** é o ponto mais rápido e equilibrado: casa com o número de **núcleos físicos** da máquina e entrega o melhor aproveitamento (eficiência) — o tempo já está próximo do mínimo prático.
+- De **8 → 12** o ganho é **marginal** (de 13,72 s para 12,46 s, ~1,3 s) e a eficiência **cai** (68,1% → 62,5%): gasta-se mais processos para ganhar pouco.
+- **Acima de 12**, ao ultrapassar a capacidade real de paralelismo da máquina (*oversubscription*), o overhead de criação/troca de contexto e o I/O passam a dominar e a aplicação tende a ficar **mais lenta**.
+
+> **Recomendação:** use um número de processos próximo ao de núcleos físicos (**≈ 8**). Mais que isso traz retornos decrescentes e, além de ~12, perda de desempenho.
 
 ### Fatores limitantes
 
