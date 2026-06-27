@@ -334,6 +334,8 @@ Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Window
 
 > A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**.
 
+> 📌 Nos gráficos abaixo, **`p = 1` representa a execução serial** (baseline): tempo = tempo serial, **speedup = 1,00×** e **eficiência = 100%**. A partir de `p = 1`, a curva paralela acompanha naturalmente os demais pontos (2, 4, 8, 12).
+
 ### Speedup
 
 ![Speedup × Nº de Processos](imagens/grafico1.png)
