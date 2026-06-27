@@ -49,14 +49,14 @@ Ao final, o sistema compara os tempos das duas abordagens e reporta **speedup**,
 
 Processar grandes volumes de dados financeiros de forma sequencial é **lento e subutiliza o hardware**. Em uma máquina com 8 núcleos físicos (16 threads), a execução serial usa essencialmente **um único núcleo**, deixando os demais ociosos.
 
-As dores concretas que motivaram o projeto:
+As dores concretas que o produto resolve:
 
-| Dor | Impacto |
+| Dor | Impacto no negócio |
 | --- | --- |
-| **Tempo de espera alto** | Varrer ~35M de registros em série leva **mais de um minuto** a cada rodada, inviabilizando iteração rápida. |
-| **Hardware ocioso** | Apenas ~10% da CPU é usada no modo serial; 7 de 8 núcleos ficam parados. |
-| **Escalabilidade ruim** | Conforme o dataset cresce, o tempo cresce linearmente, sem qualquer aproveitamento de paralelismo. |
-| **Falta de medição** | Sem instrumentação, não há como saber se uma otimização realmente ajudou nem onde está o gargalo. |
+| **Tempo até o insight** | Varrer ~35M de registros em série leva **mais de um minuto** por rodada, atrasando análises e decisões. |
+| **Custo de infra desperdiçado** | Apenas ~10% da CPU é usada no modo serial; 7 de 8 núcleos ficam ociosos — capacidade paga e não aproveitada. |
+| **Escalabilidade ruim** | Conforme o volume de dados cresce, o tempo cresce linearmente e o pipeline não acompanha. |
+| **Falta de visibilidade** | Sem instrumentação, não há métricas de desempenho e custo para saber onde está o gargalo. |
 
 O objetivo é **reduzir o tempo de processamento** distribuindo a carga entre processos e, ao mesmo tempo, **medir objetivamente** o ganho com métricas de speedup, eficiência, CPU e RAM.
 
@@ -76,9 +76,11 @@ Como o trabalho é dividido entre N processos, o tempo total cai de forma próxi
 
 ## 👥 Para quem é este sistema
 
-- **Estudantes e professores** de Programação Concorrente/Distribuída que queiram um exemplo real, mensurável e reproduzível de speedup com `multiprocessing`.
-- **Analistas de dados** que precisem processar muitos arquivos independentes (CSV/TXT) e queiram um ponto de partida para paralelizar a varredura.
-- **Quem está aprendendo paralelismo** e quer ver, com números, por que mais processos não significam ganho proporcional.
+Pensado como **produto comercial** para quem processa grandes volumes de dados de mercado:
+
+- **Fintechs e corretoras** — que ingerem e processam históricos de cotações em escala, diariamente.
+- **Fundos quantitativos e gestoras** — que rodam *backtesting* e análises sobre o histórico de milhares de ativos.
+- **Times de dados e engenharia em finanças** — que precisam de ETL rápido de grandes bases de arquivos (CSV/TXT) sem inflar custo de infraestrutura.
 
 ---
 
