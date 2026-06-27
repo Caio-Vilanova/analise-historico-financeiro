@@ -330,7 +330,7 @@ Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Window
 | 8 | 34.906.486 | 74,79 | 13,72 | **5,45x** | 16,89% | 66,5% | 11,27 GB |
 | 12 | 34.906.486 | 93,45 | 12,46 | **7,50x** | 15,40% | 100,0% | 11,55 GB |
 
-> A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**.
+> A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**, o ideal é utilizar 8 threads para melhor eficiência e agilidade.
 
 ### Speedup
 
