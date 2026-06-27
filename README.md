@@ -327,10 +327,10 @@ Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Window
 
 | Processos | Registros | Tempo serial (s) | Tempo paralelo (s) | Speedup | CPU média | CPU máxima | RAM |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| 2 | 34.906.486 | 75,96 | 39,71 | **1,91x** | 10,91% | 18,9% | 11,46 GB |
-| 4 | 34.906.486 | 75,24 | 21,78 | **3,46x** | 13,01% | 30,7% | 11,50 GB |
-| 8 | 34.906.486 | 74,79 | 13,72 | **5,45x** | 16,89% | 66,5% | 11,27 GB |
-| 12 | 34.906.486 | 93,45 | 12,46 | **7,50x** | 15,40% | 100,0% | 11,55 GB |
+| 2 | 34.906.486 | 75,33 | 39,71 | **1,91x** | 10,91% | 18,9% | 11,46 GB |
+| 4 | 34.906.486 | 75,33 | 21,78 | **3,46x** | 13,01% | 30,7% | 11,50 GB |
+| 8 | 34.906.486 | 75,33 | 13,72 | **5,45x** | 16,89% | 66,5% | 11,27 GB |
+| 12 | 34.906.486 | 75,33 | 12,46 | **7,50x** | 15,40% | 100,0% | 11,55 GB |
 
 > A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**.
 
