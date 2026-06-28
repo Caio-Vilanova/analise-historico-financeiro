@@ -327,12 +327,12 @@ Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Window
 
 | Processos | Registros | Tempo serial (s) | Tempo paralelo (s) | Speedup | CPU média | CPU máxima | RAM |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| 2 | 34.906.486 | 75,33 | 39,71 | **1,91x** | 10,91% | 18,9% | 11,46 GB |
+| 2 | 34.906.486 | 75,33 | 39,71 | **1,90x** | 10,91% | 18,9% | 11,46 GB |
 | 4 | 34.906.486 | 75,33 | 21,78 | **3,46x** | 13,01% | 30,7% | 11,50 GB |
-| 8 | 34.906.486 | 75,33 | 13,72 | **5,45x** | 16,89% | 66,5% | 11,27 GB |
-| 12 | 34.906.486 | 75,33 | 12,46 | **7,50x** | 15,40% | 100,0% | 11,55 GB |
+| 8 | 34.906.486 | 75,33 | 13,72 | **5,49x** | 16,89% | 66,5% | 11,27 GB |
+| 12 | 34.906.486 | 75,33 | 12,46 | **6,05x** | 15,40% | 100,0% | 11,55 GB |
 
-> A execução serial é independente do número de processos (é sempre a mesma varredura de um único processo). A oscilação para **93,45 s** na última linha reflete ruído do sistema durante aquela rodada — o restante fica em torno de **~75 s**.
+> **Baseline serial único.** A execução serial não depende do número de processos (é sempre a mesma varredura de um único processo). Por isso adotamos um **tempo serial baseline de 75,33 s**, igual à média das três medições consistentes (75,96 / 75,24 / 74,79 s). A medição de **93,45 s** obtida na rodada de 12 processos foi descartada como *outlier* (ruído do sistema). Todos os *speedups* e eficiências são calculados a partir desse baseline (`Speedup = 75,33 / tempo_paralelo`).
 
 > 📌 Nos gráficos abaixo, **`p = 1` representa a execução serial** (baseline): tempo = tempo serial, **speedup = 1,00×** e **eficiência = 100%**. A partir de `p = 1`, a curva paralela acompanha naturalmente os demais pontos (2, 4, 8, 12).
 
@@ -356,8 +356,8 @@ Eficiência = `speedup / nº de processos × 100%`. Mede o quanto cada processo 
 
 ## 🧠 Análise dos resultados
 
-- O tempo paralelo cai de forma expressiva: de **~76 s** (serial) para **12,46 s** com 12 processos — **speedup de 7,50×**.
-- A **eficiência diminui** conforme `p` cresce (de ~95,5% com 2 processos para ~62,5% com 12). Isso é esperado: o overhead de criar/gerenciar processos e o I/O de disco passam a pesar mais.
+- O tempo paralelo cai de forma expressiva: de **~75 s** (serial baseline) para **12,46 s** com 12 processos — **speedup de 6,05×**.
+- A **eficiência diminui** conforme `p` cresce (de ~95% com 2 processos para ~50% com 12). Isso é esperado: o overhead de criar/gerenciar processos e o I/O de disco passam a pesar mais.
 - A **CPU máxima chega a 100%** com 12 processos, mostrando que o sistema passou a explorar todos os núcleos disponíveis.
 - O **consumo de memória se mantém estável** (~11,5 GB) em todas as configurações.
 
@@ -368,7 +368,7 @@ Em resumo, o paralelismo entrega ganhos reais e significativos, mas com **retorn
 Para esta carga e este hardware (**8 núcleos físicos** / 16 threads), o ponto ideal fica em **até 8 processos**:
 
 - **8 processos** é o ponto mais rápido e equilibrado: casa com o número de **núcleos físicos** da máquina e entrega o melhor aproveitamento (eficiência) — o tempo já está próximo do mínimo prático.
-- De **8 → 12** o ganho é **marginal** (de 13,72 s para 12,46 s, ~1,3 s) e a eficiência **cai** (68,1% → 62,5%): gasta-se mais processos para ganhar pouco.
+- De **8 → 12** o ganho é **marginal** (de 13,72 s para 12,46 s, ~1,3 s) e a eficiência **despenca** (68,6% → 50,4%): gasta-se 50% mais processos para ganhar pouco.
 - **Acima de 12**, ao ultrapassar a capacidade real de paralelismo da máquina (*oversubscription*), o overhead de criação/troca de contexto e o I/O passam a dominar e a aplicação tende a ficar **mais lenta**.
 
 > **Recomendação:** use um número de processos próximo ao de núcleos físicos (**≈ 8**). Mais que isso traz retornos decrescentes e, além de ~12, perda de desempenho.
