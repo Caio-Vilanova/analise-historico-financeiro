@@ -325,12 +325,12 @@ Para reproduzir a tabela de resultados, rode o benchmark variando `processos` em
 
 Ambiente: **Intel Xeon E5-2640 v3** (8 núcleos / 16 threads), 16 GB RAM, Windows 11, Python 3.14.
 
-| Processos | Registros | Tempo serial (s) | Tempo paralelo (s) | Speedup | CPU média | CPU máxima | RAM |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| 2 | 34.906.486 | 75,33 | 39,71 | **1,90x** | 10,91% | 18,9% | 11,46 GB |
-| 4 | 34.906.486 | 75,33 | 21,78 | **3,46x** | 13,01% | 30,7% | 11,50 GB |
-| 8 | 34.906.486 | 75,33 | 13,72 | **5,49x** | 16,89% | 66,5% | 11,27 GB |
-| 12 | 34.906.486 | 75,33 | 12,46 | **6,05x** | 15,40% | 100,0% | 11,55 GB |
+| Processos | Registros | Tempo serial (s) | Tempo paralelo (s) | Speedup | Eficiência | CPU média | CPU máxima | RAM |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 2 | 34.906.486 | 75,33 | 39,71 | **1,90x** | **95,00%** | 10,91% | 18,9% | 11,46 GB |
+| 4 | 34.906.486 | 75,33 | 21,78 | **3,46x** | **86,50%** | 13,01% | 30,7% | 11,50 GB |
+| 8 | 34.906.486 | 75,33 | 13,72 | **5,49x** | **68,63%** | 16,89% | 66,5% | 11,27 GB |
+| 12 | 34.906.486 | 75,33 | 12,46 | **6,05x** | **50,42%** | 15,40% | 100,0% | 11,55 GB |
 
 > **Baseline serial único.** A execução serial não depende do número de processos (é sempre a mesma varredura de um único processo). Por isso adotamos um **tempo serial baseline de 75,33 s**, igual à média das três medições consistentes (75,96 / 75,24 / 74,79 s). A medição de **93,45 s** obtida na rodada de 12 processos foi descartada como *outlier* (ruído do sistema). Todos os *speedups* e eficiências são calculados a partir desse baseline (`Speedup = 75,33 / tempo_paralelo`).
 
